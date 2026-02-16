@@ -4,6 +4,7 @@
     "environment_file": "environment.yml"
   },
   "jupyter-config-data": {
-    "appName": "Astro II playground"
+    "appName": "Astro II playground",
+    "defaultKernelName": "xpython"
   }
 }

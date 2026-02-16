@@ -29,10 +29,10 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install JupyterLite + Xeus Python
+      - name: Install JupyterLite + Xeus
         run: |
           python -m pip install -U pip
-          python -m pip install jupyterlite jupyterlite-xeus-python jupyter-server
+          python -m pip install jupyterlite jupyterlite-xeus jupyter-server
 
       - name: Build site with Xeus environment
         run: |
