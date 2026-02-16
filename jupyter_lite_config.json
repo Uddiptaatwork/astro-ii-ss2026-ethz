@@ -1,5 +1,8 @@
 {
   "jupyter-lite-schema-version": 0,
+  "XeusAddon": {
+    "environment_file": "environment.yml"
+  },
   "jupyter-config-data": {
     "appName": "Astro II playground"
   }
