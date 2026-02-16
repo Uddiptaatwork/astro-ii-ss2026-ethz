@@ -23,7 +23,7 @@ jobs:
       - name: Install JupyterLite + Xeus Python
         run: |
           python -m pip install -U pip
-          python -m pip install jupyterlite jupyterlite-xeus-python
+          python -m pip install jupyterlite jupyterlite-xeus-python jupyter-server
 
       - name: Build site
         run: |
