@@ -1,4 +1,4 @@
-name: Build and Deploy JupyterLite to GitHub Pages
+name: Build and Deploy Static Course Site (HTML + Colab)
 
 on:
   push:
@@ -15,11 +15,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build-deploy:
+  build:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -29,14 +26,17 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install JupyterLite + Xeus
+      - name: Install deps
         run: |
           python -m pip install -U pip
-          python -m pip install jupyterlite jupyterlite-xeus jupyter-server
+          pip install nbconvert jupyter jinja2 pygments
 
-      - name: Build site with Xeus environment
+      - name: Build static site
+        env:
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_REF_NAME: ${{ github.ref_name }}
         run: |
-          jupyter lite build --contents content --output-dir dist --XeusAddon.environment_file=environment.yml
+          python tools/build_site.py
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -44,8 +44,14 @@ jobs:
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: site
 
-      - name: Deploy to GitHub Pages
-        id: deployment
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
         uses: actions/deploy-pages@v4
