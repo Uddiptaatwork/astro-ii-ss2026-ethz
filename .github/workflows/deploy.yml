@@ -2,7 +2,7 @@ name: Build and Deploy JupyterLite to GitHub Pages
 
 on:
   push:
-    branches: ["main"]
+    branches: ["main", "colab_hosted"]
   workflow_dispatch:
 
 permissions:
