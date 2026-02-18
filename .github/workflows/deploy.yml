@@ -25,11 +25,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # ✅ REQUIRED for jupyterlite-xeus to build from environment.yml
       - name: Setup micromamba
         uses: mamba-org/setup-micromamba@v2
         with:
           micromamba-version: "latest"
+          environment-file: environment.yml
+          environment-name: astro2-lite
           cache-environment: true
 
       - name: Set up Python
