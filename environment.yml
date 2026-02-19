@@ -8,6 +8,8 @@ dependencies:
 - ipython
 - ipywidgets
 - matplotlib
+- pandas
+- requests
 - numpy
 - pandas
 - requests

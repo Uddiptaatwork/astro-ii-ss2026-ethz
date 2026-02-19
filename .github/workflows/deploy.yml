@@ -46,6 +46,7 @@ jobs:
       - name: Build site with Xeus environment
         shell: bash -l {0}
         run: |
+          rm -rf dist
           jupyter lite build \
             --contents content \
             --output-dir dist \
