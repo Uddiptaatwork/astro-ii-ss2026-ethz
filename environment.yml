@@ -8,5 +8,7 @@ dependencies:
 - ipython
 - ipywidgets
 - matplotlib
+- pandas
+- requests
 - numpy
 - scipy
