@@ -9,4 +9,6 @@ dependencies:
 - ipywidgets
 - matplotlib
 - numpy
+- pandas
+- requests
 - scipy
