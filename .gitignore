@@ -3,6 +3,8 @@ __pycache__/
 *.py[codz]
 *$py.class
 **discussion**
+**dat**
+**hide**
 
 # C extensions
 *.so
